@@ -1,0 +1,12 @@
+{% extends 'myapp/base.html' %}
+
+{% block title %}Book Detail{% endblock %}
+
+{% block content %}
+<h1 class="mt-4">{{ object.title }}</h1>
+<p><strong>Author:</strong> {{ object.author }}</p>
+<p><strong>Published Date:</strong> {{ object.published_date }}</p>
+<p><strong>ISBN:</strong> {{ object.isbn }}</p>
+<a href="{% url 'book_edit' object.pk %}" class="btn btn-warning">Edit</a>
+<a href="{% url 'book_list' %}" class="btn btn-secondary">Back to list</a>
+{% endblock %}

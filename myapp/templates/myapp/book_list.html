@@ -1,0 +1,36 @@
+{% extends 'myapp/base.html' %}
+
+{% block title %}Lista de Libros{% endblock %}
+{% block content %}
+        <h1 class="mt-4">Lista de Libros</h1>
+        
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>
+                        titulo
+                    </th>
+                    <th>
+                        Autor
+                    </th>
+                    <th>
+                        <a class="btn btn-primary" href="{% url 'book_create' %}">Agregar Libro</a>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for book in object_list%}
+                <tr>
+                    <td>{{ book.title }}</td>
+                    <td>{{ book.author }}</td>
+                    <td>
+                        <a class="btn btn-secondary" href="{% url 'book_detail' book.pk %}">Ver</a>
+                        <a class="btn btn-warning" href="{% url 'book_edit' book.pk %}">Editar</a>
+                        <a class="btn btn-danger" href="{% url 'book_delete' book.pk %}">Eliminar</a>
+                    </td>
+                
+                </tr>
+            {% endfor%}
+            </tbody>
+        </table>
+{% endblock %}
